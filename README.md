@@ -90,7 +90,7 @@ uint16_t tasks[][5] = {
   
 The above array containing a list of tasks needs some explanation.
 
-The declaration of *uint_16_t tasks[][5] =* implies an two dimentional array for N tasks (undefined number of rows) with 5 values each.
+The declaration of ***uint_16_t tasks[][5] =*** implies an two dimentional array for N tasks (undefined number of rows) with 5 values each.
 
 If we look at the first entry in the array:
 
