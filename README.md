@@ -1,7 +1,9 @@
 # ArduinoScheduler
-Inactive aging scheduler.
+Basic inactive aging scheduler.
 
-##This page is under construction, please come back in a day or so.
+
+**This page is under construction, please come back in a day or so.**
+**2016/01/14**
 
 ###The Problem
 I have written software for a pumphouse / irigation control system.
@@ -25,7 +27,7 @@ minimum hardware, preferably on an Arduino UNO.
 I have written several usefull libraries for the above project, and the intention is to publish them here
 over time with examples. The scheduler I think is the most powerfull tool...
 
-##The Solution
+###The Solution
 I discussed this timing loop spagetti that evolved as my project has grown with my brother, whom is
 a very creative and clever developer. He has come accross some multitasking schedulers in his studies and he
 sugested I implement an inactive ageging scheduler. I then did this, and the result was a scheduler that
@@ -35,7 +37,7 @@ the cpu is not doing anytning for around 66 percent of the time.
 I have several versions of this sceduler (they can be comined into one, however sometimes simple is better if
 you have only 2k of RAM)
 
-###Basic Concepts
+####Basic Concepts
 
 Every task is given a priority, a higher priority means more time spent doing this task.
 
