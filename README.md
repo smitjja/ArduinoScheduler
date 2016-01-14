@@ -39,9 +39,24 @@ you have only 2k of RAM) and a more basic reauirement.
 
 ####Basic Concepts
 
-Every task is given a priority, a higher priority means more time spent doing this task.
+* Every task is given a priority, a higher priority means more time spent doing this task.
 
-A task is a function, a function could call other functions as in any other arduino sketch.
+* A task is a function, a function could call other functions as in any other arduino sketch.
+
+* Since this scheduler is a non preemptive scheduler (See Teminology below) it calls one task (function) and wait for
+this task to complete. In a perfect world this task would finish instantaniously, as having delays, etc will make all
+other tasks wait as well and cause the system to be unresponsive.
+
+  * To Achieve the above it is reccomented to break the sketch into many simple tasks as an example:
+    * checkButtonPress
+    * readAnalog
+    * blinkLED
+    * testCounter
+    * printValues
+    
+    This will enable us to control how much priority each task is given using the scheduler in a simple fasion.
+
+### Terminology
 
 
 
