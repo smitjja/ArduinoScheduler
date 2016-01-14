@@ -75,27 +75,35 @@ you have only 2k of RAM) and a more basic reauirement.
 ``` 
 // PRIORITY, AGE, WAKETIME X 2, TASKPTR
 uint16_t tasks[][5] = {
-  {64 ,  0, 0, 0, (uint16_t) &task_CheckButtonPress},
-  {4,    0, 0, 0, (uint16_t) &task_ReadAnalog},
-  {32,   0, 0, 0, (uint16_t) &task_BlinkLED},
-  {8,    0, 0, 0, (uint16_t) &task_ButtonPressedLED},
-  {1,    0, 0, 0, (uint16_t) &task_TestCounter1},
-  {4,    0, 0, 0, (uint16_t) &task_TestCounter2},
-  {16,   0, 0, 0, (uint16_t) &task_TestCounter3},
-  {64,   0, 0, 0, (uint16_t) &task_PrintValues},
-  {0,    0, 0, 0, 0 } //Critical, indicates the end of task list!
+  {64,  0, 0, 0, (uint16_t) &task_CheckButtonPress},
+  {1,   0, 0, 0, (uint16_t) &task_ReadAnalog},
+  {1,   0, 0, 0, (uint16_t) &task_BlinkLED},
+  {1,   0, 0, 0, (uint16_t) &task_ButtonPressedLED},
+  {1,   0, 0, 0, (uint16_t) &task_TestCounter1},
+  {4,   0, 0, 0, (uint16_t) &task_TestCounter2},
+  {1,   0, 0, 0, (uint16_t) &task_TestCounter3},
+  {1,   0, 0, 0, (uint16_t) &task_PrintValues},
+  {0,   0, 0, 0, 0 } //Critical, indicates the end of task list!
 };
 ```
 
   
 The above array containing a list of tasks needs some explanation.
 
-The declaration of ***uint_16_t tasks[][5] =*** implies an two dimentional array for N tasks (undefined number of rows) with 5 values each.
+The declaration of ***uint_16_t tasks[][5] =*** speficies an two dimentional array for N tasks (undefined number of rows) with 5 values each.
 
 If we look at the first entry in the array:
 
 {64 ,  0, 0, 0, (uint16_t) &task_CheckButtonPress}
 
+
+The values:
+
+* 64 - specifies a task priority of 64 (values between 1 and 64 is reccomended)
+* 0 - reserved for scheduler use, should be 0
+* 0 - reserved for scheduler use, should be 0
+* 0 - reserved for scheduler use, should be 0
+* (uint16_t) &task_CheckButtonPress - is a pointer (address of) task_CheckButtonPress function to call for this task.
 
   
 
