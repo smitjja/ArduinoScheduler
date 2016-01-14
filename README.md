@@ -47,14 +47,19 @@ you have only 2k of RAM) and a more basic reauirement.
 this task to complete. In a perfect world this task would finish instantaniously, as having delays, etc will make all
 other tasks wait as well and cause the system to be unresponsive.
 
-  * To Achieve the above it is reccomented to break the sketch into many simple tasks as an example:
+  * In order to achieve the above it is reccomended to break the sketch into many simple tasks as an example:
     * checkButtonPress
     * readAnalog
     * blinkLED
-    * testCounter
+    * buttonPressedLED
+    * testCounter1
+    * testCounter2
     * printValues
     
     This will enable us to control how much priority each task is given using the scheduler in a simple fasion.
+    
+* I also added a very usefull feature to the scheduler for tasks that only needs to be called after a certain time.
+as an example, we call printValues only once a second and testCounter3 only once every 5 seconds.
 
 ### Terminology
 
