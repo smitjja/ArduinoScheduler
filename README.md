@@ -72,18 +72,18 @@ you have only 2k of RAM) and a more basic reauirement.
  
  Example code:
  
- // PRIORITY, AGE, WAKETIME X 2, TASKPTR
-uint16_t tasks[][5] = {
-  {64 ,  0, 0, 0, (uint16_t) &task_CheckButtonPress},
-  {4,    0, 0, 0, (uint16_t) &task_ReadAnalog},
-  {32,   0, 0, 0, (uint16_t) &task_BlinkLED},
-  {8,    0, 0, 0, (uint16_t) &task_ButtonPressedLED},
-  {1,    0, 0, 0, (uint16_t) &task_TestCounter1},
-  {4,    0, 0, 0, (uint16_t) &task_TestCounter2},
-  {16,   0, 0, 0, (uint16_t) &task_TestCounter3},
-  {64,   0, 0, 0, (uint16_t) &task_PrintValues},
-  {0,    0, 0, 0, 0 } //Critical, indicates the end of task list!
-};
+>// PRIORITY, AGE, WAKETIME X 2, TASKPTR
+>uint16_t tasks[][5] = {
+>  {64 ,  0, 0, 0, (uint16_t) &task_CheckButtonPress},
+>  {4,    0, 0, 0, (uint16_t) &task_ReadAnalog},
+>  {32,   0, 0, 0, (uint16_t) &task_BlinkLED},
+>  {8,    0, 0, 0, (uint16_t) &task_ButtonPressedLED},
+>  {1,    0, 0, 0, (uint16_t) &task_TestCounter1},
+>  {4,    0, 0, 0, (uint16_t) &task_TestCounter2},
+>  {16,   0, 0, 0, (uint16_t) &task_TestCounter3},
+>  {64,   0, 0, 0, (uint16_t) &task_PrintValues},
+>  {0,    0, 0, 0, 0 } //Critical, indicates the end of task list!
+>};
   
 The above array containing a list of tasks needs some explanation.
 
