@@ -1,5 +1,5 @@
 # ArduinoScheduler
-Basic inactive aging scheduler.
+Basic inactive ageing scheduler.
 
 
 **This page is under construction, please come back in a day or so.**
@@ -25,7 +25,7 @@ I needed to resolve this in a simple and neat fasion. I also wanted to do someth
 minimum hardware, preferably even on an Arduino UNO for other projects.
 
 I have written several usefull libraries for the above project, and the intention is to publish them here
-over time with examples. This scheduler I think is really unique (on arduino) and powerfull.
+over time with examples. This scheduler I think is really unique (on Arduino) and powerfull.
 
 ###The Solution
 I discussed this timing loop spagetti that evolved as my project has grown with my brother, who is
@@ -90,7 +90,7 @@ uint16_t tasks[][5] = {
   
 The above array containing a list of tasks needs some explanation.
 
-The declaration of ***uint_16_t tasks[][5] =*** speficies an two dimentional array for N tasks (undefined number of rows) with 5 values each.
+The declaration of ***uint_16_t tasks[][5] =*** specifies a two dimentional array for N tasks (undefined number of rows) with 5 values each.
 
 If we look at the first entry in the array:
 
@@ -104,6 +104,8 @@ The values:
 * 0 - reserved for scheduler use, should be 0
 * 0 - reserved for scheduler use, should be 0
 * (uint16_t) &task_CheckButtonPress - is a pointer (address of) task_CheckButtonPress function to call for this task.
+
+
 
   
 
