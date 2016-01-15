@@ -125,16 +125,6 @@ The values:
 * (uint16_t) &task_CheckButtonPress - is a pointer (address of) task_CheckButtonPress function to call for this task.
 
 
-####Test setup
-I used and Arduino UNO R3 to test this example. I have two LEDs wired to digital out D12 and D13 with appropiate resistors
-and polarity (2k2) to ground. I also have a push button wired between digital in D3 and ground(GND). Lastly I monitor the
-USB port using the Arduino environment Serial monitor. I have the *baudrate* at *115200* baud in the example. This could be
-modified in the Serial.begin() statement.
-
-I compiled the code in Arduino 1.6.6 - GCC 4.8.1 on OpenSuSE linux. I have used the same scheduler in my own projects in Arduino
-1.5 as well.
-
-
 #### SchedulerExample1
 * As stated earlier, the highest priority is assigned to monitor the button in order not to miss it.
 * Counter1 has a priority of 1 and Counter2 has a priority of 4, this will then show that Counter2 
@@ -164,6 +154,16 @@ in future, for the lean and mean projects out there.
 * I still need to experiment, but it should be possible to put the arduino in sleep mode when nothing needs to be executed
   (all tasks are sleeping), and thus save power which could prove usefull for some applications like loggers sampling temperature
   or humidity every minute and saving data to an SD card every 10 minutes?
+
+####Test setup
+I used and Arduino UNO R3 to test this example. I have two LEDs wired to digital out D12 and D13 with appropiate resistors
+and polarity (2k2) to ground. I also have a push button wired between digital in D3 and ground(GND). Lastly I monitor the
+USB port using the Arduino environment Serial monitor. I have the *baudrate* at *115200* baud in the example. This could be
+modified in the Serial.begin() statement.
+
+I compiled the code in Arduino 1.6.6 - GCC 4.8.1 on OpenSuSE linux. I have used the same scheduler in my own projects in Arduino
+1.5 as well.
+
 
 
 ####Real Schedulers
