@@ -126,11 +126,13 @@ The values:
 
 
 #### SchedulerExample1
-* As stated earlier, the highest priority is assigned to monitor the button in order not to miss it.
+* As stated earlier, the highest priority is assigned to monitor the button in order not to miss a button press.
 * Counter1 has a priority of 1 and Counter2 has a priority of 4, this will then show that Counter2 
   is called more often and therefore gets more execution time slots.
 * Counter3 has the same priority as Counter1 however it calls setWakeTime(...) at the end of each execution
-  and does not get called again for 5 seconds.
+  and does not get called again for 5 seconds. Important to understand is unlike a delay(5000) it does not pause
+  the program for 5 seconds, but only this one task! WARNING: don't call sleep for one task from another task,
+  as this can cause funny behaviour very difficult to debug. WARNING: cut an paste is evil.
 * task_CheckButtonPress only checks if the button is still pressed after 100ms, but if it has not been pressed
   it will be called every several microseconds (as per scheduler priority) to make sure we don't miss a button press.
 * task_ButtonPressedLED() keeps LED1 on for 2000ms after the button press was detected. It also sleeps 100ms every
