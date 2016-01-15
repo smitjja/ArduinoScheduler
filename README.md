@@ -147,12 +147,12 @@ The values:
   
   
 ###Possible Variants
-* The scheduler as presented works well without the setWakeTime() component as well, and is obviously even less of an overhead
-when implemented as such, however this component is a small price to pay for al lot of flexability. I will present such an example
+* The scheduler as presented works well without the setWakeTime() component as well, and has obviously even less of an overhead
+when implemented as such, however this component is a small price to pay for a lot of flexability. I will present such an example
 in future, for the lean and mean projects out there.
 * I have also played around with a sleep task with auto tuning priority and duration, this then gives me time spent in tasks and 
-  time spent sleeping (doing NOPs in a loop). This then calculates time slept in a second and time doing tasks and shows the ratio. 
-  I will put this up here in future as well as time allows.
+  time spent sleeping (doing NOPs in a loop). This then calculates time slept in a second and time doing tasks which is dispayed
+  as a ratio. I will put this up here in future as time allows.
 * I still need to experiment, but it should be possible to put the arduino in sleep mode when nothing needs to be executed
   (all tasks are sleeping), and thus save power which could prove usefull for some applications like loggers sampling temperature
   or humidity every minute and saving data to an SD card every 10 minutes?
