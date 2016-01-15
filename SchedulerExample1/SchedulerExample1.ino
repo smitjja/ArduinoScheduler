@@ -6,15 +6,16 @@
  * Design: Andre Smit & Albert (HA) Smit 
  * Date:   2016/01/15
  * 
+ * 
+ * LEGAL STUFF:
  * This software was written as an example and for my own use. As such you choose
  * to use it at your own risk. The liability limit of this software is equal to 
  * what you paid for it. In other words nothing.
- * 
  * This is free software;There is NO warranty; not even for MERCHANTABILITY 
  * or FITNESS FOR A PARTICULAR PURPOSE.
- * 
  * I hereby make SchedulerExample1 available under the GNU GENERAL PUBLIC LICENSE Version 2, June 1991
  * 
+ * SOFTWARE DESCRIPTION:
  * This is an example of a scheduler with a fixed preconfigured priority per task.
  * Please refer to README.md file published with this file for more detail.
  * It is assumed you know how to wire an LED and resistor to Arduino, etc
@@ -23,6 +24,7 @@
  * I am testing this example on an Arduino UNO R3, and using the same scheduler in
  * installed systems on an Arduino Mega 2560
  * 
+ * ARDUINO:
  * Lastly the Arduino platform this was written for is an awesome tool. 
  * Many thanks to every AVR GCC & Arduino contributor.
  * 
