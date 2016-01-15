@@ -137,13 +137,13 @@ The values:
   it will be called every several microseconds (as per scheduler priority) to make sure we don't miss a button press.
 * task_ButtonPressedLED() keeps LED1 on for 2000ms after the button press was detected. It also sleeps 100ms every
   cycle, as this helps to not waste scheduler task execution time slots. This implies our LED will switch on and off up
-  to 100ms late. This is however not a real issue. This is a example good of the things to be taken into account using a
+  to 100ms late. This is however not a real issue. This is a good example of the things to be taken into account using a
   fixed priority scheduler and task sleep cycles.
 * task_PrintValues() is used to print the values of counter and analog sample averages. It then calls setWakeTime(...)
   and sleeps 980ms to wake up roughly 1 second later.
 * It is also important to understand that the sleep time set by setWakeTime, implies the minimum time slept. The task will
   only be called in its next timeslot after the time has expired. This is one of the reasons that all tasks should be kept
-  shot and sweet, as any single task running for many milliseconds, delays the next one, etc.
+  short and sweet, as any single task running for many milliseconds, delays the next one, etc.
   
   
 ###Possible Variants
