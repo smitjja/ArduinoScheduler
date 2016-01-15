@@ -103,7 +103,7 @@ uint16_t tasks[][5] = {
   {1,   0, 0, 0, (uint16_t) &task_PrintValues},
   {0,   0, 0, 0, 0 } //Critical, indicates the end of task list!
 };
-```
+'''
 
   
 The above array containing a list of tasks needs some explanation.
