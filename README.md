@@ -28,13 +28,13 @@ interface, buttons and display updates on the above project much more responsive
 I discussed this timing loop spagetti that evolved as my project has grown with my brother, who is
 a very creative and clever developer. He has come accross some multitasking schedulers in his studies and he
 sugested I implement an inactive ageging scheduler. I then did this, and the result was a scheduler that
-surpassed all my expectations. Using this my software never misses a button press, makes adding a task (function)
+surpassed all my expectations. The software never misses a button press, makes adding a task (function)
 easy and the cpu is not doing anytning for around 66 percent of the time.
 
-I have several versions of this scheduler for different application (they can be combined into one, however
-sometimes simple is better if you have only 2k of RAM) and a more basic requirement.
+I have several versions of this scheduler for different applications (they can be combined into one, however
+sometimes simple is better if you have only 2k of RAM) and a basic requirement.
 
-The scheduler in SchedulerExample1 is very basic, but works very well in practice. Is only a few lines of code
+The scheduler in SchedulerExample1 is quite basic, but works very well in practice. It is only a few lines of code
 and uses minimal resources.
 
 ####What is a Scheduler
@@ -51,7 +51,7 @@ plan the scheduling and give more timeslots to tasks that need them. For example
 and we need to give it more priority. We can also break a logical function in two, as in the SchedulerExample1 for the
 task_checkButtonPress() and task_buttonPressedLED() functions. The reasoning behind this is that we need to monitor the
 button press in task_checkButtonPress() with high priority to make sure we don't miss it. We do not need to switch the LED
-in task_buttonPressedLED() instantaniously, as a human being takes many milliseconds to observe and event. If the LED switches
+in task_buttonPressedLED() instantaniously, as a human being takes many milliseconds to observe an event. If the LED switches
 a few microseconds earlier or later, it makes no difference.
 
 
