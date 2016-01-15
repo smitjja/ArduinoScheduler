@@ -144,7 +144,7 @@ The values:
   shot and sweet, as any single task running for many milliseconds, delays the next one, etc.
   
   
-####Possible Variants
+###Possible Variants
 * The scheduler as presented works well without the setWakeTime() component as well, and is obviously even less of an overhead
 when implemented as such, however this component is a small price to pay for al lot of flexability. I will present such an example
 in future, for the lean and mean projects out there.
@@ -155,7 +155,7 @@ in future, for the lean and mean projects out there.
   (all tasks are sleeping), and thus save power which could prove usefull for some applications like loggers sampling temperature
   or humidity every minute and saving data to an SD card every 10 minutes?
 
-####Test setup
+###Test setup
 I used and Arduino UNO R3 to test this example. I have two LEDs wired to digital out D12 and D13 with appropiate resistors
 and polarity (2k2) to ground. I also have a push button wired between digital in D3 and ground(GND). Lastly I monitor the
 USB port using the Arduino environment Serial monitor. I have the *baudrate* at *115200* baud in the example. This could be
@@ -166,7 +166,7 @@ I compiled the code in Arduino 1.6.6 - GCC 4.8.1 on OpenSuSE linux. I have used 
 
 
 
-####Real Schedulers
+###Real Schedulers
 This is an extremely simple scheduler, with no active priority or timeslot tuning. Therefore an inactive ageing schduler.
 There are much better algorithms out there, for an AVR it is however usefull to have a small footprint and low overhead.
 If complex software facinates you, read up on the scheduler used in Linux, it is considdered one of the best out there.
