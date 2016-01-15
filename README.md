@@ -3,8 +3,8 @@ Basic inactive ageing scheduler.
 
 ###The Problem
 I have written software for a pump house equipment & irigation control system.
-This basically has several state machines to monitor the dam level and filling cycles, 
-fill the tank used for water in the house, and manage borehole resting cycles etc.
+This basically has several state machines to monitor the dam level, fill the tank used for
+water in the house, and manage borehole resting cycles etc.
 This is then managed via the LCD/Keypad and or remotely from my house using a web interface.
 
 The system is running on a Arduino Mega 2560 with a DFRobot LCD display, and some custom built electronics
@@ -12,7 +12,7 @@ to interface with valves, pump controllers and sensors.
 
 All of this works quite well, except that I had sets of loops inside loops and interrupt triggered flags, to call all
 the neccesary methods in sequence with the right priority and timing. If you add one method, the buttons would not
-respond reliably, as the timing changed etc.
+respond reliably, due to the timing that changed etc.
 
 Something that is worth mentioning, is that this was my first Arduino Project. I did not foresee that the
 project will become so complex, as I never imagnined an Arduino to be so powerfull, allowing me to keep adding functionality.
