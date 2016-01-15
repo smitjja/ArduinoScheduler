@@ -169,9 +169,17 @@ I compiled the code in Arduino 1.6.6 - GCC 4.8.1 on OpenSuSE linux. I have used 
 
 
 ###Real Schedulers
-This is an extremely simple scheduler, with no active priority or timeslot tuning. Therefore an inactive ageing schduler.
+This is an extremely simple scheduler, with no active priority or timeslot tuning. Therefore an inactive ageing scheduler.
 There are much better algorithms out there, for an AVR it is however usefull to have a small footprint and low overhead.
 If complex software facinates you, read up on the scheduler used in Linux, it is considdered one of the best out there.
+
+
+###Arduino
+Lastly the Arduino platform this was written for is an awesome tool. 
+Many thanks to every AVR GCC & Arduino contributor.
+
+See: http://www.arduino.cc
+
 
 
 
