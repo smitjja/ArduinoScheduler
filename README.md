@@ -1,10 +1,6 @@
 # ArduinoScheduler
 Basic inactive ageing scheduler.
 
-
-**This page is under construction, please come back in a day or so.**
-**2016/01/14**
-
 ###The Problem
 I have written software for a pump house equipment & irigation control system.
 This basically has several state machines to monitor the dam level and filling cycles, 
