@@ -1,43 +1,40 @@
 # ArduinoScheduler
 Basic inactive ageing scheduler.
 
-###The Problem
-I have written software for a pump house equipment & irrigation control system.
-This basically has several state machines to monitor the dam level, fill the tank used for
-water in the house, and manage borehole resting cycles etc.
-This is then managed via the LCD/Keypad and or remotely from my house using a web interface.
+###Introduction
+This project is an example of how to use my scheduler. This was developed to resolve some timing issues experienced in bigger Arduino
+projects. These issues are discussed under *Why I did it* below. The scheduler makes it easy run give different Arduino tasks (functions)
+in parallel with different priorities. Time slots are dynamically allocated according to priority and distributed evenly between the tasks.
 
-The system is running on a Arduino Mega 2560 with a DFRobot LCD display, and some custom built electronics
-to interface with valves, pump controllers and sensors.
+This is a non-preemptive scheduler. As such it will wait for each task to complete before the next task. This is also called a co-operative
+scheduler because all tasks need to work together. This means that if one task hogs the processor, the others don't get a chance to run.
+Tasks should be designed to finish as quickly as possible, and waiting is to be taken care of by the scheduler. Ideally you should not have
+to call delay() ever.
 
-All of this works quite well, except that I had sets of loops inside loops and interrupt triggered flags, to call all
-the necessary methods in sequence with the right priority and timing. If you add one method, the buttons would not
-respond reliably, due to the timing that changed etc.
+###SchedulerExample1
 
-Something that is worth mentioning, is that this was my first Arduino Project. I did not foresee that the
-project will become so complex, as I never imagined an Arduino to be so powerful, allowing me to keep adding functionality.
+This is a basic example of using my scheduler with task priorities and sleep time.
 
-I needed to resolve this in a simple and neat fashion. I also wanted to do something lightweight that will work with the
-minimum hardware, preferably even on an Arduino UNO for other projects.
+It runs the following tasks in parallel:
 
-I have written several useful libraries for the above project, and the intention is to publish them here
-over time with examples. This scheduler I think is really unique (on Arduino) and powerfully. It made the web
-interface, buttons and display updates on the above project much more responsive and the actual code less complex.
+* It flashes a LED in one task
+* Detects a button press
+* Shows whether a button has been pressed using a LED
+* Samples analogue inputs
+* Increments counter1
+* Increments counter2
+* Prints values of all above actions
 
-###The Solution
-I discussed this timing loop spaghetti that evolved as my project has grown with my brother, who is
-a very creative and clever developer. He has come across some multitasking schedulers in his studies and he
-suggested I implement an inactive ageing scheduler. I then did this, and the result was a scheduler that
-surpassed all my expectations. The software never misses a button press, makes adding a task (function)
-easy and the CPU is not doing anything for around 66 percent of the time.
+###Test setup
+I used and Arduino UNO R3 to test this example. I have two LED's wired to digital out D12 and D13 with appropriate resistors
+and polarity (2k2) to ground. I also have a push button wired between digital in D3 and ground(GND). Lastly I monitor the
+USB port using the Arduino environment Serial monitor. I have the *baud rate* at *115200* baud in the example. This could be
+modified in the Serial.begin() statement.
 
-I have several versions of this scheduler for different applications (they can be combined into one, however
-sometimes simple is better if you have only 2k of RAM) and a basic requirement.
+I compiled the code in Arduino 1.6.6 - GCC 4.8.1 on OpenSuSE Linux. I have used the same scheduler in my own projects in Arduino
+1.5 as well.
 
-The scheduler in SchedulerExample1 is quite basic, but works very well in practice. It is only a few lines of code
-and uses minimal resources.
-
-####What is a Scheduler
+###What is a Scheduler
 A lot have been written about schedulers in places like Wikipedia and Information Technology materials.
 I do not intend to try and improve on that.
 
@@ -46,14 +43,13 @@ This task controls and distributes processor time slots to tasks as required. In
 the task gets a slot, then gets frozen and the next task gets a slot, etc. Schedulers aim to be fair and give time slots
 to tasks as they need them. Enough said, apart from the fact that this scheduler presented here is NOT preemptive.
 
-The scheduler here only calls tasks with a fixed priority as predefined, and explained below. We need to carefully
+This scheduler here only calls tasks with a fixed priority as predefined, and explained below. We need to carefully
 plan the scheduling and give more time slots to tasks that need them. For example we don't want to miss a button press,
 and we need to give it more priority. We can also break a logical function in two, as in the SchedulerExample1 for the
 task_checkButtonPress() and task_buttonPressedLED() functions. The reasoning behind this is that we need to monitor the
 button press in task_checkButtonPress() with high priority to make sure we don't miss it. We do not need to switch the LED
 in task_buttonPressedLED() instantaneously, as a human being takes many milliseconds to observe an event. If the LED switches
 a few microseconds earlier or later, it makes no difference.
-
 
 ####Basic Concepts
 
@@ -125,7 +121,7 @@ The values:
 * (unit16_t) &task_CheckButtonPress - is a pointer (address of) task_CheckButtonPress function to call for this task.
 
 
-#### SchedulerExample1
+#### SchedulerExample1 - all the hairy detail....
 * As stated earlier, the highest priority is assigned to monitor the button in order not to miss a button press.
 * Counter1 has a priority of 1 and Counter2 has a priority of 4, this will then show that Counter2 
   is called more often and therefore gets more execution time slots.
@@ -157,15 +153,43 @@ in future, for the lean and mean projects out there.
   (all tasks are sleeping), and thus save power which could prove useful for some applications like loggers sampling temperature
   or humidity every minute and saving data to an SD card every 10 minutes?
 
-###Test setup
-I used and Arduino UNO R3 to test this example. I have two LED's wired to digital out D12 and D13 with appropriate resistors
-and polarity (2k2) to ground. I also have a push button wired between digital in D3 and ground(GND). Lastly I monitor the
-USB port using the Arduino environment Serial monitor. I have the *baud rate* at *115200* baud in the example. This could be
-modified in the Serial.begin() statement.
 
-I compiled the code in Arduino 1.6.6 - GCC 4.8.1 on OpenSuSE Linux. I have used the same scheduler in my own projects in Arduino
-1.5 as well.
 
+
+####Why I did it.
+I have written software for a pump house equipment & irrigation control system.
+This basically has several state machines to monitor the dam level, fill the tank used for
+water in the house, and manage borehole resting cycles etc.
+This is then managed via the LCD/Keypad and or remotely from my house using a web interface.
+
+The system is running on a Arduino Mega 2560 with a DFRobot LCD display, and some custom built electronics
+to interface with valves, pump controllers and sensors.
+
+All of this works quite well, except that I had sets of loops inside loops and interrupt triggered flags, to call all
+the necessary methods in sequence with the right priority and timing. If you add one method, the buttons would not
+respond reliably, due to the timing that changed etc.
+
+Something that is worth mentioning, is that this was my first Arduino Project. I did not foresee that the
+project will become so complex, as I never imagined an Arduino to be so powerful, allowing me to keep adding functionality.
+
+I needed to resolve this in a simple and neat fashion. I also wanted to do something lightweight that will work with the
+minimum hardware, preferably even on an Arduino UNO for other projects.
+
+I have written several useful libraries for the above project, and the intention is to publish them here
+over time with examples. This scheduler I think is really unique (on Arduino) and powerfully. It made the web
+interface, buttons and display updates on the above project much more responsive and the actual code less complex.
+
+I discussed this timing loop spaghetti that evolved as my project has grown with my brother, who is
+a very creative and clever developer. He has come across some multitasking schedulers in his studies and he
+suggested I implement an inactive ageing scheduler. I then did this, and the result was a scheduler that
+surpassed all my expectations. The software never misses a button press, makes adding a task (function)
+easy and the CPU is not doing anything for around 66 percent of the time.
+
+I have several versions of this scheduler for different applications (they can be combined into one, however
+sometimes simple is better if you have only 2k of RAM) and a basic requirement.
+
+The scheduler in SchedulerExample1 is quite basic, but works very well in practice. It is only a few lines of code
+and uses minimal resources.
 
 
 ###Real Schedulers
