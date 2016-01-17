@@ -3,13 +3,13 @@ Basic inactive ageing scheduler.
 
 ###Introduction
 This project is an example of how to use my scheduler. This was developed to resolve some timing issues experienced in bigger Arduino
-projects. These issues are discussed under *Why I did it* below. The scheduler makes it easy run give different Arduino tasks (functions)
+projects. These issues are discussed under *Why I did it* below. The scheduler makes it easy to run different Arduino tasks (functions)
 in parallel with different priorities. Time slots are dynamically allocated according to priority and distributed evenly between the tasks.
 
-This is a non-preemptive scheduler. As such it will wait for each task to complete before the next task. This is also called a co-operative
-scheduler because all tasks need to work together. This means that if one task hogs the processor, the others don't get a chance to run.
-Tasks should be designed to finish as quickly as possible, and waiting is to be taken care of by the scheduler. Ideally you should not have
-to call delay() ever.
+This is a non-preemptive scheduler. As such it will wait for each task to complete before running the next one. This is also called a
+co-operative scheduler because all tasks need to work together. This means that if one task hogs the processor, the others don't get a
+chance to run. Tasks should be built to finish as quickly as possible, all waiting is to be taken care of by the scheduler. Ideally you
+should not have to call delay() ever.
 
 ###SchedulerExample1
 
