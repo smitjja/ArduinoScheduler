@@ -25,7 +25,7 @@ It runs the following tasks in parallel:
 * Increments counter2
 * Prints values of all above actions
 
-###Test setup
+####Test setup
 I used and Arduino UNO R3 to test this example. I have two LED's wired to digital out D12 and D13 with appropriate resistors
 and polarity (2k2) to ground. I also have a push button wired between digital in D3 and ground(GND). Lastly I monitor the
 USB port using the Arduino environment Serial monitor. I have the *baud rate* at *115200* baud in the example. This could be
@@ -34,7 +34,7 @@ modified in the Serial.begin() statement.
 I compiled the code in Arduino 1.6.6 - GCC 4.8.1 on OpenSuSE Linux. I have used the same scheduler in my own projects in Arduino
 1.5 as well.
 
-###What is a Scheduler
+####What is a Scheduler
 A lot have been written about schedulers in places like Wikipedia and Information Technology materials.
 I do not intend to try and improve on that.
 
@@ -82,7 +82,7 @@ a few microseconds earlier or later, it makes no difference.
   as other tasks can continue and this one will only be called again after N milliseconds.
   
   
- ####Task List
+####Task List
  
  Example code:
 
@@ -142,7 +142,7 @@ The values:
   short and sweet, as any single task running for many milliseconds, delays the next one, etc.
   
   
-###Possible Variants
+####Possible Variants
 * The scheduler as presented works well without the setWakeTime() component as well, and has obviously even less of an overhead
 when implemented as such, however this component is a small price to pay for a lot of flexibility. I will present such an example
 in future, for the lean and mean projects out there.
@@ -156,7 +156,7 @@ in future, for the lean and mean projects out there.
 
 
 
-####Why I did it.
+###Why I did it.
 I have written software for a pump house equipment & irrigation control system.
 This basically has several state machines to monitor the dam level, fill the tank used for
 water in the house, and manage borehole resting cycles etc.
